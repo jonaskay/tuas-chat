@@ -18,7 +18,7 @@ export default class App extends Component {
   createSocket() {
     const url = new URL(window.location.href);
     const host = [url.hostname, url.port].join(':');
-    const cable = ActionCable.createConsumer(`ws://${host}/cable`);
+    const cable = ActionCable.createConsumer(`wss://${host}/cable`);
     const chat = cable.subscriptions.create(
       { channel: 'ChatChannel' },
       {
