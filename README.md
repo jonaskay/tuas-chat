@@ -1,24 +1,21 @@
-# README
+# tuas-chat
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a simple chat app for Rails using React and Webpack.
 
-Things you may want to cover:
+## Requirements
 
-* Ruby version
+* Ruby
+* Bundler
+* PostgreSQL
+* Node.js
+* Yarn
 
-* System dependencies
+## Install
 
-* Configuration
+To install the project, run
 
-* Database creation
+  $ ./bin/setup
 
-* Database initialization
+To setup the database, run
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  $ rails db:create db:migrate
