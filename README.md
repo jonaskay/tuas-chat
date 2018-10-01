@@ -14,8 +14,8 @@ This is a simple chat app for Rails using React and Webpack.
 
 To install the project, run
 
-  $ ./bin/setup
+    $ ./bin/setup
 
 To setup the database, run
 
-  $ rails db:create db:migrate
+    $ rails db:create db:migrate
