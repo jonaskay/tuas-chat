@@ -6,10 +6,17 @@ export default class ChatForm extends Component {
     this.state = { value: '' };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
     this.setState({ value: event.target.value });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.handleSubmit(this.state.value);
+    this.setState({ value: '' })
   }
 
   render() {
@@ -39,7 +46,7 @@ export default class ChatForm extends Component {
     };
 
     return (
-      <form onSubmit={this.props.handleSubmit()} style={wrapperStyle}>
+      <form onSubmit={this.handleSubmit} style={wrapperStyle}>
         <input
           type="text"
           style={textStyle}

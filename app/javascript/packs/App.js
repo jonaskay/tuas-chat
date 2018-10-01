@@ -1,8 +1,46 @@
 import React, { Component } from 'react';
+import ActionCable from 'actioncable';
 import ChatLog from './ChatLog';
 import ChatForm from './ChatForm';
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { messages: [] }
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    this.createSocket();
+  }
+
+  createSocket() {
+    const cable = ActionCable.createConsumer('ws://localhost:3000/cable');
+    const chat = cable.subscriptions.create(
+      { channel: 'ChatChannel' },
+      {
+        connected: () => {},
+        received: data => {
+          let messages = this.state.messages;
+          messages.push(data);
+          this.setState({ messages: messages });
+        },
+        create: function(messageBody) {
+          this.perform('create', {
+            body: messageBody
+          });
+        }
+      }
+    )
+
+    this.setState({ chat: chat });
+  }
+
+  handleSubmit(messageBody) {
+    this.state.chat.create(messageBody);
+  }
+
   render() {
     const wrapperStyle = {
       display: 'flex',
@@ -13,8 +51,8 @@ export default class App extends Component {
 
     return (
       <div style={wrapperStyle}>
-        <ChatLog />
-        <ChatForm />
+        <ChatLog messages={this.state.messages} />
+        <ChatForm handleSubmit={this.handleSubmit} />
       </div>
     );
   }
