@@ -10,6 +10,8 @@ This is a simple chat app for Rails using React and Webpack.
 * Node.js
 * Yarn
 
+You can also follow the ["Install Ruby On Rails"](https://gorails.com/setup/ubuntu/18.10) directions by Go Rails to install all the required software and libraries.
+
 ## Install
 
 To install the project, run
@@ -19,3 +21,9 @@ To install the project, run
 To setup the database, run
 
     $ rails db:create db:migrate
+
+## Useful commands
+
+To run the app locally, run
+
+    $ rails server
