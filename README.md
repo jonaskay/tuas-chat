@@ -2,6 +2,8 @@
 
 This is a simple chat app for Rails using React and Webpack.
 
+The app was used as a demo to showcase how you can build an SPA with React and Rails.
+
 ## Requirements
 
 * Ruby
